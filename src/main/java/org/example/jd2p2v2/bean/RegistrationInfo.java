@@ -117,9 +117,12 @@ public final class RegistrationInfo implements Serializable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		RegistrationInfo that = (RegistrationInfo) o;
-		return Objects.equals(login, that.login) && Objects.equals(password, that.password)
-				&& Objects.equals(name, that.name) && Objects.equals(surname, that.surname)
-				&& Objects.equals(status, that.status) && Objects.equals(role, that.role);
+		return Objects.equals(login, that.login)
+				&& Objects.equals(password, that.password)
+				&& Objects.equals(name, that.name)
+				&& Objects.equals(surname, that.surname)
+				&& Objects.equals(status, that.status)
+				&& Objects.equals(role, that.role);
 	}
 
 	@Override

@@ -23,7 +23,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public ViewResolver viewResolver() {
-        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        InternalResourceViewResolver resolver =
+                new InternalResourceViewResolver();
         resolver.setPrefix(ConfigAttr.RESOLVER_PREFIX);
         resolver.setSuffix(ConfigAttr.RESOLVER_SUFFIX);
 
@@ -37,7 +38,8 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public MessageSource messageSource() {
-        ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
+        ResourceBundleMessageSource messageSource =
+                new ResourceBundleMessageSource();
         messageSource.setBasenames(ConfigAttr.MESSAGE_BASENAME);
         messageSource.setDefaultEncoding(ConfigAttr.MESSAGE_ENCODING);
 
@@ -51,13 +53,15 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        LocaleChangeInterceptor localeChangeInterceptor = new LocaleChangeInterceptor();
+        LocaleChangeInterceptor localeChangeInterceptor =
+                new LocaleChangeInterceptor();
         localeChangeInterceptor.setParamName(ConfigAttr.INTERCEPTOR_NAME);
 
         registry.addInterceptor(localeChangeInterceptor);
     }
 
-    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+    public void configureDefaultServletHandling(
+            DefaultServletHandlerConfigurer configurer) {
         configurer.enable();
     }
 }

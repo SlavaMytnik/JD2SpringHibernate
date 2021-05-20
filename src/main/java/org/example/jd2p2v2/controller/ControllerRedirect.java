@@ -6,9 +6,11 @@ public final class ControllerRedirect {
     public static final String SHOW_ERROR_PAGE = REDIRECT
             + ControllerMapping.BASE + ControllerMapping.SHOW_ERROR_PAGE;
     public static final String SHOW_REDIRECT_REGISTRATION_PAGE = REDIRECT
-            + ControllerMapping.BASE + ControllerMapping.SHOW_REDIRECT_REGISTRATION_PAGE;
+            + ControllerMapping.BASE
+            + ControllerMapping.SHOW_REDIRECT_REGISTRATION_PAGE;
     public static final String SHOW_REDIRECT_LOGINATION_PAGE = REDIRECT
-            + ControllerMapping.BASE + ControllerMapping.SHOW_REDIRECT_LOGINATION_PAGE;
+            + ControllerMapping.BASE
+            + ControllerMapping.SHOW_REDIRECT_LOGINATION_PAGE;
     public static final String SHOW_MAIN_PAGE = REDIRECT
             + ControllerMapping.BASE + ControllerMapping.SHOW_MAIN_PAGE;
     public static final String SHOW_INDEX_PAGE = REDIRECT

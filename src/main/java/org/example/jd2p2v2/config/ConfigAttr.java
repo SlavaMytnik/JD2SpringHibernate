@@ -3,7 +3,8 @@ package org.example.jd2p2v2.config;
 public final class ConfigAttr {
     public static final String SERVLET_MAPPING = "/";
 
-    public static final String PROPERTY_SOURCE = "classpath:database/database.properties";
+    public static final String PROPERTY_SOURCE =
+            "classpath:database/database.properties";
     public static final String COMPONENT_SCAN = "org.example.jd2p2v2";
 
     public static final String DB_DRIVER = "db.driver";

@@ -49,7 +49,8 @@ public final class News implements Serializable {
 		this.brief = brief;
 	}
 
-	public News(int id, String title, String brief, String content, LocalDateTime date, String status) {
+	public News(int id, String title, String brief,
+				String content, LocalDateTime date, String status) {
 		this.id = id;
 		this.title = title;
 		this.brief = brief;

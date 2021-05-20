@@ -26,9 +26,11 @@ public class ControllerException {
         String message = e.getMessage();
 
         if (message.contains(ControllerAttr.LOGINATION_INFO_ERROR)) {
-            return new ModelAndView(ControllerRedirect.SHOW_REDIRECT_LOGINATION_PAGE);
+            return new ModelAndView(
+                    ControllerRedirect.SHOW_REDIRECT_LOGINATION_PAGE);
         } else if (message.contains(ControllerAttr.REGISTRATION_INFO_ERROR)) {
-            return new ModelAndView(ControllerRedirect.SHOW_REDIRECT_REGISTRATION_PAGE);
+            return new ModelAndView(
+                    ControllerRedirect.SHOW_REDIRECT_REGISTRATION_PAGE);
         } else {
             return new ModelAndView(ControllerRedirect.SHOW_ERROR_PAGE);
         }

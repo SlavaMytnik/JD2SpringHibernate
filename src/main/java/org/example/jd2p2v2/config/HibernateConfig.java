@@ -33,7 +33,8 @@ public class HibernateConfig {
     @Bean
     public DataSource getDataSource() {
         BasicDataSource dataSource = new BasicDataSource();
-        dataSource.setDriverClassName(environment.getProperty(ConfigAttr.DB_DRIVER));
+        dataSource.setDriverClassName(
+                environment.getProperty(ConfigAttr.DB_DRIVER));
         dataSource.setUrl(environment.getProperty(ConfigAttr.DB_URL));
         dataSource.setUsername(environment.getProperty(ConfigAttr.DB_USERNANE));
         dataSource.setPassword(environment.getProperty(ConfigAttr.DB_PASSWORD));
@@ -47,8 +48,10 @@ public class HibernateConfig {
         factoryBean.setDataSource(getDataSource());
 
         Properties props = new Properties();
-        props.put(ConfigAttr.HIBERNATE_SHOW_SQL, environment.getProperty(ConfigAttr.HIBERNATE_SHOW_SQL));
-        props.put(ConfigAttr.HIBERNATE_DLL_AUTO, environment.getProperty(ConfigAttr.HIBERNATE_DLL_AUTO));
+        props.put(ConfigAttr.HIBERNATE_SHOW_SQL,
+                environment.getProperty(ConfigAttr.HIBERNATE_SHOW_SQL));
+        props.put(ConfigAttr.HIBERNATE_DLL_AUTO,
+                environment.getProperty(ConfigAttr.HIBERNATE_DLL_AUTO));
 
         factoryBean.setHibernateProperties(props);
         factoryBean.setAnnotatedClasses(User.class, News.class);
@@ -58,7 +61,8 @@ public class HibernateConfig {
 
     @Bean
     public HibernateTransactionManager getTransactionManager() {
-        HibernateTransactionManager transactionManager = new HibernateTransactionManager();
+        HibernateTransactionManager transactionManager =
+                new HibernateTransactionManager();
         transactionManager.setSessionFactory(getSessionFactory().getObject());
 
         return transactionManager;

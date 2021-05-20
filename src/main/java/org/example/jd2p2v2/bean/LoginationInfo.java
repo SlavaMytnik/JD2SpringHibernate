@@ -59,7 +59,8 @@ public final class LoginationInfo implements Serializable {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		LoginationInfo that = (LoginationInfo) o;
-		return Objects.equals(login, that.login) && Objects.equals(password, that.password);
+		return Objects.equals(login, that.login)
+				&& Objects.equals(password, that.password);
 	}
 
 	@Override

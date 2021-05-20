@@ -4,7 +4,8 @@ public final class ControllerAttr {
     public static final String LOGINATION_INFO = "loginationInfo";
     public static final String REGISTRATION_INFO = "registrationInfo";
     public static final String LOGINATION_INFO_ERROR = "loginationInfoError";
-    public static final String REGISTRATION_INFO_ERROR = "registrationInfoError";
+    public static final String REGISTRATION_INFO_ERROR =
+            "registrationInfoError";
     public static final String NEWS = "news";
     public static final String AUTH = "auth";
     public static final String USERNAME = "username";

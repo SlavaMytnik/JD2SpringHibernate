@@ -54,17 +54,19 @@ public class ControllerMain {
 	}
 
     @RequestMapping(ControllerMapping.SHOW_REGISTRATION_PAGE)
-    public String showRegistrationPage(@NotNull HttpSession session, Model model) {
+    public String showRegistrationPage(@NotNull HttpSession session,
+									   Model model) {
 		model.addAttribute(ControllerAttr.REGISTRATION_INFO, registrationInfo);
 
 		return ControllerPage.PAGE_REGISTRATION;
     }
 
 	@RequestMapping(ControllerMapping.LOGINATION)
-	public String logination(
-			@NotNull HttpSession session,
-			@Valid @ModelAttribute(ControllerAttr.LOGINATION_INFO) LoginationInfo loginationInfo,
-			BindingResult bindingResult) {
+	public String logination(@NotNull HttpSession session,
+							 @Valid
+							 @ModelAttribute(ControllerAttr.LOGINATION_INFO)
+									 LoginationInfo loginationInfo,
+							 BindingResult bindingResult) {
 		User user = userService.logination(loginationInfo);
 
 		if (user == null) {
@@ -79,10 +81,11 @@ public class ControllerMain {
 	}
 
     @RequestMapping(ControllerMapping.REGISTRATION)
-    public String registration(
-            @NotNull HttpSession session,
-			@Valid @ModelAttribute(ControllerAttr.REGISTRATION_INFO) RegistrationInfo registrationInfo,
-            BindingResult bindingResult) {
+    public String registration(@NotNull HttpSession session,
+							   @Valid
+							   @ModelAttribute(ControllerAttr.REGISTRATION_INFO)
+									   RegistrationInfo registrationInfo,
+							   BindingResult bindingResult) {
 		registrationInfo.setRole(ControllerAttr.ROLE_USER);
 		registrationInfo.setStatus(ControllerAttr.STATUS_ACTIVE);
 
@@ -111,12 +114,20 @@ public class ControllerMain {
 
 	@RequestMapping(ControllerMapping.SHOW_MAIN_PAGE)
 	public String showMainPage(@NotNull HttpSession session,
-							   @NotNull @AssertTrue @SessionAttribute(ControllerAttr.AUTH) boolean auth,
-							   @NotNull @SessionAttribute(ControllerAttr.USERNAME) String username,
-							   @NotNull @SessionAttribute(ControllerAttr.ROLE) String role,
+							   @NotNull @AssertTrue
+							   @SessionAttribute(ControllerAttr.AUTH)
+									   boolean auth,
+							   @NotNull
+								   @SessionAttribute(ControllerAttr.USERNAME)
+										   String username,
+							   @NotNull
+								   @SessionAttribute(ControllerAttr.ROLE)
+										   String role,
 							   Model model) {
-		model.addAttribute(ControllerAttr.USERNAME, session.getAttribute(ControllerAttr.USERNAME));
-		model.addAttribute(ControllerAttr.ROLE, session.getAttribute(ControllerAttr.ROLE));
+		model.addAttribute(ControllerAttr.USERNAME,
+				session.getAttribute(ControllerAttr.USERNAME));
+		model.addAttribute(ControllerAttr.ROLE,
+				session.getAttribute(ControllerAttr.ROLE));
 		model.addAttribute(ControllerAttr.NEWS, newsService.getAll());
 
 		return ControllerPage.PAGE_MAIN;
@@ -139,14 +150,26 @@ public class ControllerMain {
 
 	@RequestMapping(ControllerMapping.SHOW_NEWS_PAGE)
 	public String showNewsPage(@NotNull HttpSession session,
-							   @NotNull @AssertTrue @SessionAttribute(ControllerAttr.AUTH) boolean auth,
-							   @NotNull @SessionAttribute(ControllerAttr.USERNAME) String username,
-							   @NotNull @SessionAttribute(ControllerAttr.ROLE) String role,
-							   @NotNull @RequestParam(ControllerAttr.ID) int id,
-							   @NotNull @RequestParam(ControllerAttr.EDITED) boolean edited,
+							   @NotNull @AssertTrue
+							   @SessionAttribute(ControllerAttr.AUTH)
+									   boolean auth,
+							   @NotNull
+								   @SessionAttribute(ControllerAttr.USERNAME)
+										   String username,
+							   @NotNull
+								   @SessionAttribute(ControllerAttr.ROLE)
+										   String role,
+							   @NotNull
+								   @RequestParam(ControllerAttr.ID)
+										   int id,
+							   @NotNull
+								   @RequestParam(ControllerAttr.EDITED)
+										   boolean edited,
 							   Model model) {
-		model.addAttribute(ControllerAttr.USERNAME, session.getAttribute(ControllerAttr.USERNAME));
-		model.addAttribute(ControllerAttr.ROLE, session.getAttribute(ControllerAttr.ROLE));
+		model.addAttribute(ControllerAttr.USERNAME,
+				session.getAttribute(ControllerAttr.USERNAME));
+		model.addAttribute(ControllerAttr.ROLE,
+				session.getAttribute(ControllerAttr.ROLE));
 		model.addAttribute(ControllerAttr.ID, id);
 		model.addAttribute(ControllerAttr.EDITED, edited);
 		model.addAttribute(ControllerAttr.NEWS, newsService.getById(id));
@@ -156,14 +179,24 @@ public class ControllerMain {
 
 	@RequestMapping(ControllerMapping.SHOW_EDIT_PAGE)
 	public String showEditPage(@NotNull HttpSession session,
-							   @NotNull @AssertTrue @SessionAttribute(ControllerAttr.AUTH) boolean auth,
-							   @NotNull @SessionAttribute(ControllerAttr.USERNAME) String username,
-							   @NotNull @Pattern(regexp = ControllerAttr.ROLE_ADMIN)
-								   @SessionAttribute(ControllerAttr.ROLE) String role,
-							   @NotNull @RequestParam(ControllerAttr.ID) int id,
+							   @NotNull @AssertTrue
+							   @SessionAttribute(ControllerAttr.AUTH)
+									   boolean auth,
+							   @NotNull
+								   @SessionAttribute(ControllerAttr.USERNAME)
+										   String username,
+							   @NotNull
+								   @Pattern(regexp = ControllerAttr.ROLE_ADMIN)
+								   @SessionAttribute(ControllerAttr.ROLE)
+										   String role,
+							   @NotNull
+								   @RequestParam(ControllerAttr.ID)
+										   int id,
 							   Model model) {
-		model.addAttribute(ControllerAttr.USERNAME, session.getAttribute(ControllerAttr.USERNAME));
-		model.addAttribute(ControllerAttr.ROLE, session.getAttribute(ControllerAttr.ROLE));
+		model.addAttribute(ControllerAttr.USERNAME,
+				session.getAttribute(ControllerAttr.USERNAME));
+		model.addAttribute(ControllerAttr.ROLE,
+				session.getAttribute(ControllerAttr.ROLE));
 		model.addAttribute(ControllerAttr.ID, id);
 		model.addAttribute(ControllerAttr.NEWS, newsService.getById(id));
 
@@ -172,10 +205,16 @@ public class ControllerMain {
 
 	@RequestMapping(ControllerMapping.DELETE_NEWS)
 	public String deleteNews(@NotNull HttpSession session,
-							 @NotNull @AssertTrue @SessionAttribute(ControllerAttr.AUTH) boolean auth,
-							 @NotNull @Pattern(regexp = ControllerAttr.ROLE_ADMIN)
-								 @SessionAttribute(ControllerAttr.ROLE) String role,
-							 @NotNull @RequestParam(ControllerAttr.ID) int id) {
+							 @NotNull @AssertTrue
+							 @SessionAttribute(ControllerAttr.AUTH)
+									 boolean auth,
+							 @NotNull
+								 @Pattern(regexp = ControllerAttr.ROLE_ADMIN)
+								 @SessionAttribute(ControllerAttr.ROLE)
+										 String role,
+							 @NotNull
+								 @RequestParam(ControllerAttr.ID)
+										 int id) {
 		newsService.deleteById(id);
 
 		return ControllerRedirect.SHOW_MAIN_PAGE;
@@ -183,13 +222,25 @@ public class ControllerMain {
 
 	@RequestMapping(ControllerMapping.EDIT_NEWS)
 	public String editNews(@NotNull HttpSession session,
-						   @NotNull @AssertTrue @SessionAttribute(ControllerAttr.AUTH) boolean auth,
-						   @NotNull @Pattern(regexp = ControllerAttr.ROLE_ADMIN)
-							   @SessionAttribute(ControllerAttr.ROLE) String role,
-						   @NotNull @RequestParam(ControllerAttr.ID) int id,
-						   @NotNull @RequestParam(ControllerAttr.TITLE) String title,
-						   @NotNull @RequestParam(ControllerAttr.BRIEF) String brief,
-						   @NotNull @RequestParam(ControllerAttr.CONTENT) String content,
+						   @NotNull @AssertTrue
+						   @SessionAttribute(ControllerAttr.AUTH)
+								   boolean auth,
+						   @NotNull
+							   @Pattern(regexp = ControllerAttr.ROLE_ADMIN)
+							   @SessionAttribute(ControllerAttr.ROLE)
+									   String role,
+						   @NotNull
+							   @RequestParam(ControllerAttr.ID)
+									   int id,
+						   @NotNull
+							   @RequestParam(ControllerAttr.TITLE)
+									   String title,
+						   @NotNull
+							   @RequestParam(ControllerAttr.BRIEF)
+									   String brief,
+						   @NotNull
+							   @RequestParam(ControllerAttr.CONTENT)
+									   String content,
 						   RedirectAttributes redirectAttributes) {
 		newsService.editById(id, title, brief, content);
 
